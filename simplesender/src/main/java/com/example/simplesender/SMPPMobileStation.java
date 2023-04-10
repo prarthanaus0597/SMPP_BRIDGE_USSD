@@ -35,29 +35,13 @@ public class SMPPMobileStation {
 
 
             Response resp = objSMPPMobileStation.InitUSSDSession(objSMPPMobileStation.destinationAddress,msg);
-//            if((msg!="1")&&(msg!="2")&&(msg!="3")&&(msg!="123"))
-//            {
-//                System.exit(0);
-//            }
 
-            objSMPPMobileStation.receiveSms();
+
+            objSMPPMobileStation.receiveUSSD();
 
         }
 
-//            Request request = objSimpleSMSTransmitter.receive();
-//            if(request != null){
-//                System.out.println("Request:" + request.debugString());
-//
-////                System.out.println();
-//
-//                if( !objSimpleSMSTransmitter.processLink(request)){
-//                    break;
-//                }
-//            }
-//        }
 
-//            System.out.println("Program terminated");
-    }
     catch (Exception e){
         System.out.println(e);
     }
@@ -112,38 +96,9 @@ public class SMPPMobileStation {
     }
 
 
-    public Request receive() throws UnknownCommandIdException, TimeoutException, NotSynchronousException, PDUException, IOException, WrongSessionStateException{
 
-        PDU pdu = null;
-        Request request = null;
-        pdu = session.receive(Data.RECEIVE_BLOCKING);
-        if(pdu != null){
-            if(pdu.isRequest()){
-                request = (Request)pdu;
-                // Response response = ((org.smpp.pdu.Request)pdu).getResponse();
-                // session.respond(response);
-            }
-        }
-        return request;
-    }
 
-    public boolean processLink(Request request) throws ValueNotSetException, WrongSessionStateException, IOException{
-
-        boolean bRet = false;
-        if(request.getCommandId() == Data.ENQUIRE_LINK){
-            System.out.println("Processing link");
-            Response resp = request.getResponse();
-            sendResponse(resp);
-            System.out.println(resp.debugString());
-            bRet = true;
-        }
-        return bRet;
-    }
-    public void sendResponse(Response response) throws ValueNotSetException, WrongSessionStateException, IOException{
-        session.respond(response);
-    }
-
-    private void receiveSms() {
+    private void receiveUSSD() {
         try {
 
             PDU pdu = session.receive(1500);
