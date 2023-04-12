@@ -31,17 +31,37 @@ public class SMPPMobileStation {
         String msg;
         while(true) {
         Scanner sc=new Scanner(System.in);
-            msg=sc.nextLine();
+            msg=sc.next();
 
 
             Response resp = objSMPPMobileStation.InitUSSDSession(objSMPPMobileStation.destinationAddress,msg);
-
-
-            objSMPPMobileStation.receiveUSSD();
+//            if((msg!="1")&&(msg!="2")&&(msg!="3")&&(msg!="123"))
+//            {
+//                System.exit(0);
+//            }
+//            if((msg=="1")||(msg=="2")||(msg=="3")||(msg=="5")) {
+                objSMPPMobileStation.receiveUSSD();
+//            }
+//            else{
+//                System.exit(0);
+//            }
 
         }
 
+//            Request request = objSimpleSMSTransmitter.receive();
+//            if(request != null){
+//                System.out.println("Request:" + request.debugString());
+//
+////                System.out.println();
+//
+//                if( !objSimpleSMSTransmitter.processLink(request)){
+//                    break;
+//                }
+//            }
+//        }
 
+//            System.out.println("Program terminated");
+    }
     catch (Exception e){
         System.out.println(e);
     }
@@ -61,7 +81,7 @@ public class SMPPMobileStation {
             BindResponse bresp = (BindResponse) session.bind(breq);
 
             if(bresp.getCommandStatus() == Data.ESME_ROK) {
-                System.out.println("Connected to SMSC.\n Enter the USSD code: ");
+                System.out.print("Connected to SMSC.\nEnter the USSD code:\n> ");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,15 +106,14 @@ public class SMPPMobileStation {
     }
     public DeliverSMResp InitUSSDSession(String phoneNumber,String msg) throws ValueNotSetException, TimeoutException, PDUException, WrongSessionStateException, IOException {
         DeliverSM request = createUSSDRequest(phoneNumber,msg);
-        System.out.println( "USSDRequest"+request.debugString());
+//        System.out.println( "USSDRequest"+request.debugString());
         DeliverSMResp response = session.deliver(request);
-        System.out.println(response.getData().getBuffer());
-        if (response.getCommandStatus() == Data.ESME_ROK) {
-            System.out.println("USSD submitted....");
-        }
+//        System.out.println(response.getData().getBuffer());
+//        if (response.getCommandStatus() == Data.ESME_ROK) {
+//            System.out.println("USSD submitted....");
+//        }
         return response;
     }
-
 
 
 
@@ -106,7 +125,7 @@ public class SMPPMobileStation {
             if (pdu != null) {
                 DeliverSM sms = (DeliverSM) pdu;
 
-                System.out.println("Service Type: " + sms.getServiceType());
+//                System.out.println("Service Type: " + sms.getServiceType());
 //                System.out.println("To: " + sms.getDestAddr());
 
                 if ((int)sms.getDataCoding() == 0 ) {
@@ -114,12 +133,12 @@ public class SMPPMobileStation {
                     System.out.println("***** New Message Received *****");
                     System.out.println("From: " + sms.getSourceAddr().getAddress());
                     System.out.println("To: " + sms.getDestAddr().getAddress());
-                    System.out.println("Content: \n" + sms.getShortMessage());
-                }
-                if(sms.getShortMessage()=="Exiting)"){
+                    System.out.print("\n" + sms.getShortMessage());
+
+                if(sms.getShortMessage().equals("Thank you choosing ABC Bank")){
                  System.exit(0);
                 }
-
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
