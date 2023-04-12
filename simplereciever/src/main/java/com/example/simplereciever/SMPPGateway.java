@@ -43,7 +43,7 @@ public class SMPPGateway {
                 try {
                     Response resp = objSMPPGateway.InitUSSDSession(objSMPPGateway.destinationAddress);
                     objSMPPGateway.ans=0;
-                    if(resp!=null && msg=="Exiting"){
+                    if(resp!=null && msg=="Thank you choosing ABC Bank"){
                         System.exit(0);
                     }
                 } catch (Exception e) {
@@ -96,48 +96,49 @@ public class SMPPGateway {
                 }
                 input=sms.getShortMessage();
                 switch(input){
-                  case  "*123#": msg="\nMenu :\n" +
+                  case  "*123#": msg="\nPlease select one of the below options to process -->\n" +
 
-                          "1. Red\n"+
-                          "2. Green \n"+
-                          "3. Blue \n"+
-                  "4.Exit\n";
+                          "1. View Account Details\n"+
+                          "2. Check Account Balance \n"+
+                          "3. Last Transaction \n"+
+                          "4. Exit\n>";
                     break;
-                    case  "1":  msg="\nYou chose Red \n" +
+                    case  "1":  msg="\nAccount Holder Name: Tom Jackson\n" +
+                            "Account Number : 10243278910\n" +
+                            "Registered Mobile No. : 844867XXXX \n" +
 
-                            "\nMenu :\n" +
+                            "\nPlease select one of the below options to process -->\n" +
 
-                            "1. Red\n"+
-                            "2. Green \n"+
-                            "3. Blue \n"+
-                            "4. Exit\n";
+                        "1. View Account Details\n"+
+                                "2. Check Account Balance \n"+
+                                "3. Last Transaction \n"+
+                                "4. Exit\n>";
                         break;
-                    case  "2":  msg="You chose Green " +
+                    case  "2":  msg="\nYour Account Balance is Rs.1,20,108 \n " +
 
-                            "\nMenu :\n" +
+                            "\nPlease select one of the below options to process -->\n" +
 
-                            "1. Red\n"+
-                            "2. Green \n"+
-                            "3. Blue \n"+
-                            "4. Exit\n";
-                        break;
-
-                    case  "3":  msg="You chose Blue " +
-
-                            "\nMenu :\n" +
-
-                            "1. Red\n"+
-                            "2. Green \n"+
-                            "3. Blue \n"+
-                            "4. Exit\n";
+                            "1. View Account Details\n"+
+                            "2. Check Account Balance \n"+
+                            "3. Last Transaction \n"+
+                            "4. Exit\n>";
                         break;
 
+                    case  "3":  msg="\nBelow is your last transaction Detail:\n" +
+                            "[Debit]- 10,April,2023 - 1000Rs - ATM Withrawl\n " +
+
+                            "\nPlease select one of the below options to process -->\n" +
+
+                            "1. View Account Details\n"+
+                            "2. Check Account Balance \n"+
+                            "3. Last Transaction \n"+
+                            "4. Exit\n>";
+                        break;
 
 
-                    default:  msg="Exiting";
 
-
-break;
+                    default:  msg="Thank you choosing ABC Bank";
+                    break;
                 }
                 ans=1;
             }
