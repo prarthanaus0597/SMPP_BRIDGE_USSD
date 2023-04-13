@@ -22,3 +22,13 @@ USSD :
 
 ![image](https://user-images.githubusercontent.com/100505947/231861785-a4ed4451-bdc9-4ea0-92ac-4bc9afdc8fbf.png)
 
+
+
+
+
+
+
+References :
+
+- [GitHub] https://github.com/OpenSmpp/opensmpp
+- [Manual] http://opensmpp.org/specifications.html
