@@ -40,16 +40,7 @@ Components of OpenSMPP Used :
 
 
 Flow of Execution :
-
-Client(Mobile) ----------PSSR_IND(*123#)-------> SMSC-----PSSR_IND(*123#)-----> Application(Gateway)
-                                                                                       **|**
-Client(Mobile)<-----USSR_REQ(Menu)------SMSC <------------(Menu)---------------- Application(Gateway)
-      **|**
-Client(Mobile)----->USSR_ACK , Select value from menu ----------> SMSC------->Application(Gateway)
-                                                                                       **|**
-Client(Mobile) <---------- Info (USSR RES)-----------SMSC------(USSR RES)----------Application(Gateway)
-      **|**
-Client(Mobile) --------(PSSR_RESP)----------->SMSC----(PSSR_RESP)--------->Application(End session)
+![image](https://user-images.githubusercontent.com/100505947/231870385-f31a3970-4efe-4ee8-8dc4-1724cf6f3760.png)
 
 
 
