@@ -41,10 +41,34 @@ USSD: ****(Unstructured Supplementary Service Data)****
   - DeliverSM
   - TLVOctets
   - DeliverSMResp
+  - BindTransciever
+  - PDU
+  - Session
 
 - Mobile station End:
+  - TCPIPConnection
+  - BindRequest
+  - BindResponse
+  - DeliverSM
+  - TLVOctets
+  - DeliverSMResp
+  - BindTransciever
+  - PDU
+  - Session
 
 - SMSC End :
+  - SMSCSession
+  - SMSCListener
+  - SimulatorPDUProcessorFactory
+  - PDUProcessorGroup
+  - PDU
+  - DeliveryInfoSender
+  - BufferedReader
+  - Connection
+  - ReceiverBase
+  - Receiver
+ 
+  
 
 
 
@@ -55,6 +79,7 @@ USSD: ****(Unstructured Supplementary Service Data)****
 **Execution Steps:**
 1. Clone the smppsender ,smpp reciever and smpp simulator(smsc) project
 2. Run the smsc, smsc sender ,and smpp reciever projects separately in that order.
+3. Enter *123# in the sender 
 
 SENDER(MobileStation) :
 ![image](https://user-images.githubusercontent.com/100505947/231871864-746a44e6-06df-49e3-b5b2-ab12e1443e05.png)
@@ -66,12 +91,14 @@ RECIEVER(Gateway) :
 SIMULATOR :
 ![image](https://user-images.githubusercontent.com/100505947/231871755-58c730ac-0d8d-4eec-883b-3b044f79379d.png)
 
-4. Enter *123# in the sender 
-5. choose appropriate option in the list of Options
+
+4. choose appropriate option in the list of Options
 ![image](https://user-images.githubusercontent.com/100505947/231872307-d9ae32b8-5490-49c4-aed9-c951fdeea4a7.png)
 ![image](https://user-images.githubusercontent.com/100505947/231872371-56de456d-6dc2-4eff-b88f-ade9948827c4.png)
 ![image](https://user-images.githubusercontent.com/100505947/231872448-d88ed57e-3d04-47d2-8555-f4cfc4cdf2e0.png)
-6. End the session of both sender and reciever.
+
+
+5. End the session of both sender and reciever.
 ![image](https://user-images.githubusercontent.com/100505947/231872534-9edc64e1-59fd-49db-bc72-ba345b5069a6.png)
 
 
@@ -84,8 +111,8 @@ SIMULATOR :
 - Setting and TLVs values
 
 **Future Enhancement :**
-- Integrate developed USSD with backend of any domain  as per requirement.
-- Now only 2 processes are connected Gateway and MobileStation. Can be extended to many mobile station  
+- Integrate developed USSD with backend of Application in any domain  as per requirement.
+- Now only 2 processes are connected Gateway and MobileStation. Can be extended to many mobile stations  
 
 **References :**
 
