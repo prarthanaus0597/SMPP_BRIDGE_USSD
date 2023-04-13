@@ -16,13 +16,21 @@ SMPP :
 - **Receiver** (**RX**) - a receiver session enables an ESME to receive messages from an MC. These messages typically originate from mobile stations and are referred to as mobile originated messages.
 - **Transceiver** (**TRX**) - a TRX session is a combination of TX and RX, such that a single SMPP session can be used to submit mobile terminated messages and receive mobile originated messages.
 - The SMPP protocol is a set of operations, each one taking the form of a request and response Protocol Data Unit (PDU) containing an SMPP command. For example, if an ESME wishes to submit a short message, it may send a `submit_sm` PDU to the MC. The MC responds with a `submit_sm_resp` PDU, indicating the success or failure of the request. Likewise, if an MC wishes to deliver a message to an ESME, it may send a `deliver_sm` PDU to an ESME, which in turn responds with a `deliver_sm_resp` PDU as a means of acknowledging the delivery.
+![image](https://user-images.githubusercontent.com/100505947/231862873-799ffd77-38c1-4349-b2e2-e5377bdb8de0.png)
 
 
-USSD :
+
+USSD: ****(Unstructured Supplementary Service Data)****
+
+- **USSD is a text menu driven technology allowing users to interact from their handset by making selections from a menu.**
+- Unstructured Supplementary Service Data (USSD) A GSM communication technology used to send messages between a mobile phone and an application server in the network. It is very much similar to SMS, but USSD is session oriented as well as interactive.
+- USSD is just like connection-oriented SMS communication i.e, USSD is to SMS what IM is to email. The initiation of the communication can either be USSD-PUSH ( Mobile-terminated & provider originated) or a USSD-PULL (Mobile originated & provider terminated)
+- Every app requires a separate short code. USSD shortcodes are site addresses scheme similar to the website addresses in the internet world
+- in India, USSD shortcodes are owned by the mobile service providers and one needs to get the service provider to configure the right short codes for you.
+- USSD works using a connection oriented SMPP. However, USSD gateways ( service-provider owned middle-ware that relays USSD messages to and from the subscribers' mobiles, these days are capable of acting as bridges where their app interface can be over HTTP or HTTPS. In this case, I'd think you'd need HTTP or HTTPS connectivity opened between the mobile operator's gateway and your app. From then on, it is just matter of building a web-app with a text response!
+
 
 ![image](https://user-images.githubusercontent.com/100505947/231861785-a4ed4451-bdc9-4ea0-92ac-4bc9afdc8fbf.png)
-
-
 
 
 
