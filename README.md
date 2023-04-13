@@ -32,9 +32,37 @@ USSD: ****(Unstructured Supplementary Service Data)****
 
 ![image](https://user-images.githubusercontent.com/100505947/231861785-a4ed4451-bdc9-4ea0-92ac-4bc9afdc8fbf.png)
 
+Components of OpenSMPP Used :
+- 
+-
+-
 
 
 
+Flow of Execution :
+
+Client(Mobile) ----------PSSR_IND(*123#)-------> SMSC-----PSSR_IND(*123#)-----> Application(Gateway)
+                                                                                       **|**
+Client(Mobile)<-----USSR_REQ(Menu)------SMSC <------------(Menu)---------------- Application(Gateway)
+      **|**
+Client(Mobile)----->USSR_ACK , Select value from menu ----------> SMSC------->Application(Gateway)
+                                                                                       **|**
+Client(Mobile) <---------- Info (USSR RES)-----------SMSC------(USSR RES)----------Application(Gateway)
+      **|**
+Client(Mobile) --------(PSSR_RESP)----------->SMSC----(PSSR_RESP)--------->Application(End session)
+
+
+
+Problems faced :
+- Asynchronous flow of execution in Simulator blocking on I/O 
+- Extraction of PDU from Abstract library.
+- Session methods overriding.
+- SMSC connection and listener management
+- Setting and TLVs values
+
+Future Enhancement :
+- Integrate developed USSD with backend of any domain  as per requirement.
+- Now only 2 processes are connected Gateway and MobileStation. Can be extended to many mobile station  
 
 References :
 
