@@ -108,7 +108,7 @@ SIMULATOR :
 - Extraction of PDU from Abstract library.
 - Session methods overriding.
 - SMSC connection and listener management
-- Setting and TLVs values
+- Setting and transmitting TLVs values
 
 **Future Enhancement :**
 - Integrate developed USSD with backend of Application in any domain  as per requirement.
